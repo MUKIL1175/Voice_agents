@@ -1,0 +1,30 @@
+[project]
+name = "pipecat-quickstart"
+version = "0.1.0"
+description = "Voice AI bot built with Pipecat"
+requires-python = ">=3.11,<3.13"
+dependencies = [
+    "dotenv>=0.9.9",
+    "fastapi>=0.138.0",
+    "loguru>=0.7.3",
+    "onnxruntime>=1.24.4",
+    "pipecat-ai-prebuilt>=1.0.2",
+    "pipecat-ai[kokoro,moonshine,ollama,silero,webrtc]>=1.4.0",
+    "requests>=2.34.2",
+    "uvicorn>=0.49.0",
+]
+
+[dependency-groups]
+dev = [
+    "pyright>=1.1.404,<2",
+    "ruff>=0.12.11,<1",
+]
+
+[tool.ruff]
+line-length = 100
+[tool.ruff.lint]
+select = ["I", "UP"]
+
+[tool.uv]
+# Ensure uv resolves compatible wheels on Windows
+required-environments = ["sys_platform == 'win32' and platform_machine == 'AMD64'"]
